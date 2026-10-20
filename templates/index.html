@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SalaryPredict | AI Salary Estimator</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+          href="{{ url_for('static', filename='favicon.png') }}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">₹</span>
+            <span>Salary<span class="logo-highlight">Predict</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#predict">Predict</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="theme-toggle" id="themeToggle"
+                aria-label="Toggle theme">
+            ☾
+        </button>
+
+        <button class="mobile-menu"
+                id="mobileMenu"
+                aria-label="Open menu">
+            ☰
+        </button>
+
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                <span class="badge-dot"></span>
+                AI-Powered Salary Estimator
+            </div>
+
+            <h1>
+                Know Your
+                <span>Worth.</span>
+                <br>
+                Plan Your Future.
+            </h1>
+
+            <p>
+                Estimate your potential salary based on your
+                career profile, experience, education and
+                professional background.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#predict" class="primary-btn">
+                    Predict My Salary
+                    <span>→</span>
+                </a>
+
+                <a href="#how-it-works" class="secondary-btn">
+                    How It Works
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong>8+</strong>
+                    <span>Career Factors</span>
+                </div>
+
+                <div class="stat-line"></div>
+
+                <div class="hero-stat">
+                    <strong>AI</strong>
+                    <span>Powered</span>
+                </div>
+
+                <div class="stat-line"></div>
+
+                <div class="hero-stat">
+                    <strong>₹</strong>
+                    <span>Salary Estimate</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="floating-card card-one">
+                <span class="floating-icon">💼</span>
+                <div>
+                    <small>Career Role</small>
+                    <strong>Data Analyst</strong>
+                </div>
+            </div>
+
+            <div class="salary-preview">
+
+                <div class="preview-top">
+                    <span>Estimated Salary</span>
+                    <span class="preview-icon">↗</span>
+                </div>
+
+                <div class="preview-salary">
+                    ₹7.8L
+                </div>
+
+                <div class="preview-label">
+                    Per Year
+                </div>
+
+                <div class="preview-chart">
+
+                    <div class="bar bar-1"></div>
+                    <div class="bar bar-2"></div>
+                    <div class="bar bar-3"></div>
+                    <div class="bar bar-4"></div>
+                    <div class="bar bar-5"></div>
+                    <div class="bar bar-6"></div>
+                    <div class="bar bar-7"></div>
+
+                </div>
+
+                <div class="preview-footer">
+                    <span>Career Growth</span>
+                    <strong>↗ Positive</strong>
+                </div>
+
+            </div>
+
+            <div class="floating-card card-two">
+                <span class="floating-icon green">✓</span>
+                <div>
+                    <small>Profile Ready</small>
+                    <strong>8 Factors</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PREDICTION ================= -->
+
+<section class="prediction-section" id="predict">
+    <div class="section-heading">
+        <span class="section-label">SALARY ESTIMATOR</span>
+        <h2>Discover Your <span>Potential Salary</span></h2>
+        <p>Enter your professional details to get an estimated salary tailored to your profile.</p>
+    </div>
+
+    <div class="prediction-wrapper">
+        <form action="/predict" method="POST" class="prediction-form">
+
+            <div class="form-group">
+                <label for="job_title">
+                    <span class="label-icon">💼</span>
+                    Job Role
+                </label>
+                <select id="job_title" name="job_title" required>
+                    <option value="" disabled selected>Select your job role</option>
+                    <option value="AI Engineer">AI Engineer</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                    <option value="Frontend Developer">Frontend Developer</option>
+                    <option value="Business Analyst">Business Analyst</option>
+                    <option value="Product Manager">Product Manager</option>
+                    <option value="Backend Developer">Backend Developer</option>
+                    <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                    <option value="DevOps Engineer">DevOps Engineer</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Cybersecurity Analyst">Cybersecurity Analyst</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Cloud Engineer">Cloud Engineer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="education_level">
+                    <span class="label-icon">🎓</span>
+                    Education Level
+                </label>
+                <select id="education_level" name="education_level" required>
+                    <option value="" disabled selected>Select education level</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="PhD">PhD</option>
+                    <option value="High School">High School</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Master">Master</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="industry">
+                    <span class="label-icon">🏢</span>
+                    Industry
+                </label>
+                <select id="industry" name="industry" required>
+                    <option value="" disabled selected>Select industry</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Telecom">Telecom</option>
+                    <option value="Media">Media</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Education">Education</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Consulting">Consulting</option>
+                    <option value="Government">Government</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="company_size">
+                    <span class="label-icon">🏙️</span>
+                    Company Size
+                </label>
+                <select id="company_size" name="company_size" required>
+                    <option value="" disabled selected>Select company size</option>
+                    
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="Enterprise">Enterprise</option>
+                    <option value="Startup">Startup</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="location">
+                    <span class="label-icon">📍</span>
+                    Location
+                </label>
+                <select id="location" name="location" required>
+                    <option value="" disabled selected>Select location</option>
+                    <option value="India">India</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="USA">USA</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Remote">Remote</option>
+                    <option value="Germany">Germany</option>
+                    <option value="UK">UK</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="remote_work">
+                    <span class="label-icon">🌐</span>
+                    Remote Work
+                </label>
+                <select id="remote_work" name="remote_work" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="certifications_count">
+                    <span class="label-icon">🏆</span>
+                    Certifications
+                </label>
+                <input
+                    type="number"
+                    id="certifications_count"
+                    name="certifications_count"
+                    min="0"
+                    max="50"
+                    value="0"
+                    placeholder="Number of certifications"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="skills_count">
+                    <span class="label-icon">🛠️</span>
+                    Skills Count
+                </label>
+
+                <input
+                    type="number"
+                    id="skills_count"
+                    name="skills_count"
+                    min="0"
+                    max="50"
+                    value="0"
+                    placeholder="Number of skills"
+                    required
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="years_experience">
+                    <span class="label-icon">⏳</span>
+                    Years of Experience
+                </label>
+                <input
+                    type="number"
+                    id="years_experience"
+                    name="years_experience"
+                    min="0"
+                    max="50"
+                    step="0.1"
+                    placeholder="e.g. 2.5"
+                    required>
+            </div>
+
+            <div class="form-submit">
+                <button type="submit" class="predict-btn">
+                    <span>Predict My Salary</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+                <p class="privacy-note">🔒 Your information is used only for prediction.</p>
+            </div>
+        </form>
+
+        {% if prediction %}
+        <div class="result-card">
+            <div class="result-icon">₹</div>
+            <span class="result-label">YOUR ESTIMATED SALARY</span>
+            <h3>{{ prediction }}</h3>
+            <p>Estimated annual salary based on your professional profile.</p>
+            <div class="result-divider"></div>
+            <div class="result-message">
+                <span>✨</span>
+                Keep growing your skills and career!
+            </div>
+            <a href="#predict" class="try-again">Try Another Profile →</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-section" id="how-it-works">
+
+    <div class="section-heading">
+
+        <span class="section-label">SIMPLE PROCESS</span>
+
+        <h2>
+            How <span>SalaryPredict</span> Works
+        </h2>
+
+        <p>
+            Get your salary estimate in just a few simple steps.
+        </p>
+
+    </div>
+
+
+    <div class="steps-container">
+
+        <div class="step-card">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <div class="step-icon">
+                📝
+            </div>
+
+            <h3>Enter Your Details</h3>
+
+            <p>
+                Provide your job role, education,
+                experience and professional information.
+            </p>
+
+        </div>
+
+
+        <div class="step-connector">
+            →
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <div class="step-icon">
+                ⚙️
+            </div>
+
+            <h3>Process Your Profile</h3>
+
+            <p>
+                Your information is processed and prepared
+                for salary estimation.
+            </p>
+
+        </div>
+
+
+        <div class="step-connector">
+            →
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <div class="step-icon">
+                💰
+            </div>
+
+            <h3>Get Your Estimate</h3>
+
+            <p>
+                Receive your estimated salary instantly
+                based on your profile.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features-section" id="about">
+
+    <div class="section-heading">
+
+        <span class="section-label">WHY USE IT?</span>
+
+        <h2>
+            Built for Your
+            <span>Career Journey</span>
+        </h2>
+
+    </div>
+
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>Instant Results</h3>
+
+            <p>
+                Get your salary estimate within seconds
+                after submitting your profile.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎯
+            </div>
+
+            <h3>Personalized</h3>
+
+            <p>
+                Your estimate considers multiple aspects
+                of your professional profile.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>Fully Responsive</h3>
+
+            <p>
+                Use SalaryPredict comfortably on desktop,
+                tablet or mobile devices.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>Simple & Private</h3>
+
+            <p>
+                Enter your information and get your result
+                without unnecessary complexity.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta-section">
+
+    <div class="cta-container">
+
+        <div>
+
+            <span class="section-label">
+                READY TO FIND OUT?
+            </span>
+
+            <h2>
+                Discover what your
+                <span>career could be worth.</span>
+            </h2>
+
+        </div>
+
+        <a href="#predict" class="primary-btn">
+            Predict My Salary →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <a href="/" class="logo">
+                <span class="logo-icon">₹</span>
+                <span>Salary<span class="logo-highlight">Predict</span></span>
+            </a>
+
+            <p>
+                AI-powered salary estimation for
+                smarter career decisions.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+            <a href="#predict">Predict</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 SalaryPredict. All rights reserved.
+        </p>
+
+        <p>
+            Designed & Developed by
+            <strong>Rahul Dharuman</strong>
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    // ============================
+    // THEME TOGGLE
+    // ============================
+
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            themeToggle.textContent = "☀";
+        } else {
+            themeToggle.textContent = "☾";
+        }
+
+    });
+
+
+    // ============================
+    // MOBILE MENU
+    // ============================
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+    mobileMenu.addEventListener("click", () => {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    // Close mobile menu after clicking link
+
+    document.querySelectorAll(".nav-links a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("active");
+
+            });
+
+        });
+
+
+    // ============================
+    // FORM LOADING
+    // ============================
+
+    const form =
+        document.querySelector(".prediction-form");
+
+    if (form) {
+
+        form.addEventListener("submit", () => {
+
+            const button =
+                form.querySelector(".predict-btn");
+
+            button.innerHTML =
+                "<span>Predicting...</span><span>⏳</span>";
+
+            button.style.pointerEvents = "none";
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
